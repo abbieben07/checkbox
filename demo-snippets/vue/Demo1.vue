@@ -7,16 +7,10 @@
 
 		<StackLayout>
 			<FlexboxLayout>
-				<Checkbox value="remember" v-model="remember1" @checkChange="remember1 = $event.value" />
+				<Checkbox value="remember" v-model="r1" @checkedChange="r1 = $event.value" activeColor="yellow" />
 				<Label text="Remember Me" />
-				<Label :text="remember1 ? 'True' : 'False'" marginLeft="20" />
 			</FlexboxLayout>
-
-			<FlexboxLayout>
-				<Radio value="remember" v-model="remember2" @checkChange="remember2 = $event.value" />
-				<Label text="Remember Me" />
-				<Label :text="remember2 ? 'True' : 'False'" marginLeft="20" />
-			</FlexboxLayout>
+			<Label :text="r1 ? 'True' : 'False'" marginLeft="20" />
 		</StackLayout>
 	</Page>
 </template>
@@ -25,8 +19,8 @@
 export default {
 	data() {
 		return {
-			remember1: false,
-			remember2: false
+			r1: true,
+			r2: false
 		};
 	}
 };

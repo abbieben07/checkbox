@@ -1,13 +1,10 @@
-import { checkedProperty, valueProperty } from './checkbox';
-import { CheckboxCommon } from './checkbox.common';
-
+import { CheckboxCommon, checkedProperty, valueProperty } from './checkbox.common';
 export class Checkbox extends CheckboxCommon {
     nativeView: android.widget.CheckBox;
-    value: string;
 
     public createNativeView(): Object {
         const checkbox = new android.widget.CheckBox(this._context);
-        checkbox.setOnCheckedChangeListener(new CheckChangeListener());
+        checkbox.setOnCheckedChangeListener(new CheckboxListener());
         return checkbox;
     }
 
@@ -21,35 +18,37 @@ export class Checkbox extends CheckboxCommon {
         super.disposeNativeView();
     }
 
-    [valueProperty.setNative](value: string) {
-        this.value = value;
-    }
-
     [checkedProperty.setNative](value: boolean) {
         this.nativeView.setChecked(value);
     }
+
+    get activeColor(): string {
+        return (this.style as any).activeColor;
+    }
+    set activeColor(color: string) {
+        (this.style as any).activeColor = color;
+    }
+
+    get inactiveColor(): string {
+        return (this.style as any).inactiveColor;
+    }
+    set inactiveColor(color: string) {
+        (this.style as any).inactiveColor = color;
+    }
 }
-
-//@Interfaces([android.widget.CompoundButton.OnCheckedChangeListener])
 @NativeClass()
-class CheckChangeListener extends java.lang.Object implements android.widget.CompoundButton.OnCheckedChangeListener {
-    public owner: Checkbox;
-
+@Interfaces([android.widget.CompoundButton.OnCheckedChangeListener])
+class CheckboxListener extends java.lang.Object implements android.widget.CompoundButton.OnCheckedChangeListener {
     constructor() {
         super();
-
         return global.__native(this);
     }
 
     public onCheckedChanged(checkbox: globalAndroid.widget.CompoundButton, isChecked: boolean): void {
-        const owner = (checkbox as any).owner;
+        const owner: Checkbox = (checkbox as any).owner;
 
         if (owner) {
-            owner.notify({
-                eventName: Checkbox.checkEvent,
-                object: owner,
-                value: isChecked
-            });
+            owner.notifyPropertyChange(checkedProperty.name, isChecked)
         }
     }
 }

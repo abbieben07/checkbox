@@ -1,9 +1,8 @@
-import { checkedProperty, valueProperty } from './radio';
-import { RadioCommon } from './radio.common';
+import { RadioCommon, checkedProperty, valueProperty } from './radio.common';
+import { RadioGroup, selectedProperty } from './radiogroup';
 
 export class Radio extends RadioCommon {
     nativeView: android.widget.RadioButton;
-    value: string;
 
     public createNativeView(): Object {
         const radio = new android.widget.RadioButton(this._context);
@@ -21,19 +20,14 @@ export class Radio extends RadioCommon {
         super.disposeNativeView();
     }
 
-    [valueProperty.setNative](value: string) {
-        this.value = value;
-    }
-
     [checkedProperty.setNative](value: boolean) {
         this.nativeView.setChecked(value);
     }
 }
 
-//@Interfaces([android.widget.CompoundButton.OnCheckedChangeListener])
 @NativeClass()
+@Interfaces([android.widget.CompoundButton.OnCheckedChangeListener])
 class CheckChangeListener extends java.lang.Object implements android.widget.CompoundButton.OnCheckedChangeListener {
-    public owner: Radio;
 
     constructor() {
         super();
@@ -42,14 +36,14 @@ class CheckChangeListener extends java.lang.Object implements android.widget.Com
     }
 
     public onCheckedChanged(radio: globalAndroid.widget.CompoundButton, isChecked: boolean): void {
-        const owner = (radio as any).owner;
+        const owner: Radio = (radio as any).owner;
 
         if (owner) {
-            owner.notify({
-                eventName: Radio.checkEvent,
-                object: owner,
-                value: isChecked
-            });
+            owner.notifyPropertyChange(checkedProperty.name, isChecked);
+            if (owner.group && isChecked && owner.group.get(selectedProperty.name) != owner.get(valueProperty.name)) {
+                (owner.group as RadioGroup).setProperty(selectedProperty.name, owner.get(valueProperty.name))
+            }
         }
+
     }
 }
