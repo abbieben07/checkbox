@@ -1,6 +1,6 @@
 {
   "name": "@abbieben/checkbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is the description for the plugin seed. This is what will be published to NPM.",
   "main": "./checkbox",
   "sideEffects": false,
@@ -33,5 +33,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Abraham Ben-Obaje"
+  "author": "Abraham Ben-Obaje",
+  "publishConfig": {
+    "access": "public"
+  }
 }

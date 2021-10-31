@@ -1,3 +1,2 @@
 pod 'SimpleCheckbox', :git => 'https://github.com/BeauNouvelle/SimpleCheckbox.git'
-pod 'NSCheckbox', :path =>  "../../node_modules/@nativescript-community/checkbox/platforms/ios/NSCheckbox"  
-platform :ios, '11'
+platform :ios, '11.0'

@@ -1,5 +1,5 @@
 import Vue from 'nativescript-vue';
-import CheckboxPlugin from '@nativescript-community/checkbox/vue';
+import CheckboxPlugin from '@abbieben/checkbox/vue';
 
 import Demo1 from './Demo1.vue';
 import Demo2 from './Demo2.vue';

@@ -1,5 +1,5 @@
 {
-    "name": "@nativescript-community/plugin-seed-angular",
+    "name": "@abbieben/checkbox-angular",
     "main": "index.js",
     "ngPackage": {
         "dest": "../../plugin/angular",
@@ -8,7 +8,7 @@
             "umdModuleIds": {
                 "@nativescript/core": "ns-core",
                 "@nativescript/angular": "ns-angular",
-                "@nativescript-community/plugin-seed": "ns-plugin-seed"
+                "@abbieben/checkbox": "ab-checkbox"
             }
         },
         "allowedNonPeerDependencies": [
