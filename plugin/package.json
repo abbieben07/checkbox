@@ -1,33 +1,37 @@
 {
-    "name": "@nativescript-community/checkbox",
-    "version": "0.0.1",
-    "description": "This is the description for the plugin seed. This is what will be published to NPM.",
-    "main": "./checkbox",
-    "sideEffects": false,
-    "typings": "./checkbox.d.ts",
-    "nativescript": {
-        "platforms": {
-            "android": "6.0.0",
-            "ios": "6.0.0"
-        }
-    },
-    "keywords": [
-        "NativeScript",
-        "JavaScript",
-        "Android",
-        "iOS",
-        "Angular",
-        "React",
-        "Svelte",
-        "Vue"
-    ],
-    "bugs": {
-        "url": "https://github.com/nativescript-community/checkbox/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/nativescript-community/checkbox"
-    },
-    "license": "Apache-2.0",
-    "readmeFilename": "README.md"
+  "name": "@abbieben/checkbox",
+  "version": "1.0.0",
+  "description": "This is the description for the plugin seed. This is what will be published to NPM.",
+  "main": "./checkbox",
+  "sideEffects": false,
+  "typings": "./checkbox.d.ts",
+  "nativescript": {
+    "platforms": {
+      "android": "6.0.0",
+      "ios": "6.0.0"
+    }
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "Android",
+    "iOS",
+    "Angular",
+    "React",
+    "Svelte",
+    "Vue"
+  ],
+  "bugs": {
+    "url": "https://github.com/abbieben07/checkbox/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abbieben07/checkbox.git"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/abbieben07/checkbox#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abraham Ben-Obaje"
 }
